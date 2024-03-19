@@ -36,6 +36,7 @@ app.post('/', (req, res) => {
         console.log("header: ",req.headers)
         console.log("sign: ",headers)
         console.log("hmac: ",hmacSignature);
+        console.log(res)
     }
 })
 app.listen(PORT, () => {
