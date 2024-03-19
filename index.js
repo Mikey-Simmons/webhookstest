@@ -15,7 +15,7 @@ app.post('/', (req, res) => {
     
 
     // Get the JSON body raw data
-    var payload = JSON.stringify(req)
+    var payload = req.body
 
     // Concatenate payload JSON body raw data with webhook event to match 
     // the content that was used before encrypting the signature.
@@ -35,6 +35,7 @@ app.post('/', (req, res) => {
         console.log("headers: ",req.headers)
         console.log("sign: ",headers)
         console.log("hmac: ",hmacSignature);
+        console.log(req);
     }
 })
 app.listen(PORT, () => {
