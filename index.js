@@ -15,7 +15,7 @@ app.post('/', (req, res) => {
     
 
     // Get the JSON body raw data
-    var payload = req.body;
+    var payload = req;
 
     // Concatenate payload JSON body raw data with webhook event to match 
     // the content that was used before encrypting the signature.
