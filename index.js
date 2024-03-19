@@ -10,12 +10,12 @@ app.post('/', (req, res) => {
      
     // Key that will be used to encrypt JSON body data and event type.
     // Make sure the key used is the same key for the event type that is being handled.
-    var key = 'rr_IHFX6RJhZVfpAY1iMYFZ';
-    var webhook_event = "ReferralUpdate";
+    var key = 'rr_haauSJ2s14TctixfaU2m	';
+    var webhook_event = "ReferralAdd";
     
 
     // Get the JSON body raw data
-    var payload = JSON.stringify(req.body);
+    var payload = req.body;
 
     // Concatenate payload JSON body raw data with webhook event to match 
     // the content that was used before encrypting the signature.
@@ -31,9 +31,10 @@ app.post('/', (req, res) => {
     }
     else{
         console.log("invalid");
+        console.log("content: ",content)
         console.log("header: ",req.headers)
-        console.log("signarture: ",headers)
-        console.log("hmac: ",hmacSignature)
+        console.log("sign: ",headers)
+        console.log("hmac: ",hmacSignature);
     }
 })
 app.listen(PORT, () => {
