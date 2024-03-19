@@ -27,7 +27,10 @@ app.post('/', (req, res) => {
     // Compare the encrypted data against the RR-Signature header. 
     // You can consider a valid request if the hmaxSignature is equal to req.headers['RR-Signature'].
     if(hmacSignature === req.headers['RR-Signature']){
-        //valid signature
+        console.log("valid signature")
+    }
+    else{
+        console.log("invalid");
     }
 })
 app.listen(PORT, () => {
