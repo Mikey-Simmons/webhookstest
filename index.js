@@ -10,33 +10,31 @@ app.post('/', (req, res) => {
      
     // Key that will be used to encrypt JSON body data and event type.
     // Make sure the key used is the same key for the event type that is being handled.
-    var key = 'rr_ajoGa3HmOQ5fvLcOsKqC';
-    var webhook_event = "ProgramAdd";
+    var key = 'rr_IdR1vKXxqurQpVSuWW9b';
+    var webhook_event = "MemberAdd";
     
 
     // Get the JSON body raw data
-    var payload = JSON.stringify(req.body);
+    var payload = req.body 
 
     // Concatenate payload JSON body raw data with webhook event to match 
     // the content that was used before encrypting the signature.
     var content = `${payload}.${webhook_event}`;
 
     // Encrypt content using the SHA12 algorithm and convert it to a base 64 string.
-    var hmacSignature = crypto.createHmac('SHA512', Buffer.from(key, 'ASCII')).update(content).digest('base64');
+    var hmacSignature = crypto.createHmac('SHA512', key).update(content).digest('base64');
     var headers = req.headers['rr-signature'] 
     // Compare the encrypted data against the RR-Signature header. 
-    // You can consider a valid request if the hmaxSignature is equal to req.headers['RR-Signature'].
     if(hmacSignature === headers){
         console.log("valid signature")
     }
     else{
-        console.log("payload: ",payload)
         console.log("invalid");
+        console.log("payload: ",payload)
         console.log("content: ",content)
-        console.log("header: ",req.headers)
+        console.log("headers: ",req.headers)
         console.log("sign: ",headers)
         console.log("hmac: ",hmacSignature);
-        console.log(res)
     }
 })
 app.listen(PORT, () => {
