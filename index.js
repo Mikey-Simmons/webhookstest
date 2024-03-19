@@ -30,6 +30,7 @@ app.post('/', (req, res) => {
         console.log("valid signature")
     }
     else{
+        console.log("payload: ",payload)
         console.log("invalid");
         console.log("content: ",content)
         console.log("header: ",req.headers)
