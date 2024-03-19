@@ -10,8 +10,8 @@ app.post('/', (req, res) => {
      
     // Key that will be used to encrypt JSON body data and event type.
     // Make sure the key used is the same key for the event type that is being handled.
-    var key = 'rr_L1mf6tSv6ynV9srhGIXc';
-    var webhook_event = "MemberAdd"
+    var key = 'rr_IdR1vKXxqurQpVSuWW9b';
+    var webhook_event = "MemberAdd";
     
 
     // Get the JSON body raw data
